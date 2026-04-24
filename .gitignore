@@ -1,0 +1,40 @@
+# Variables de entorno con credenciales
+.env
+backend/.env
+
+# Imagenes subidas por usuarios
+backend/uploads/
+
+# Logs del servidor
+servidor_log.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+.env/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Base de datos local (si alguien usa SQLite en pruebas)
+*.db
+*.sqlite3

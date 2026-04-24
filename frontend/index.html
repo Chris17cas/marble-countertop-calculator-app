@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Mesones</title>
+  <link rel="icon" type="image/x-icon" href="assets/calculator.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">CMYG</div>
+      <div>
+        <h1 class="brand-name">Calculadora de Mesones</h1>
+        <p class="brand-sub">Mármol · Granito · Cuarzo · Piedra natural</p>
+      </div>
+    </div>
+    <nav class="tab-nav">
+      <button class="tab active" data-page="calc">Calcular</button>
+      <button class="tab" data-page="mat">Materiales</button>
+      <button class="tab" data-page="lava">Lavaplatos</button>
+      <button class="tab" data-page="hist">Historial</button>
+    </nav>
+  </header>
+
+  <main class="main-content">
+
+    <!--calcular-->
+    <div class="page active" id="page-calc">
+
+      <div class="selection-strip">
+        <div class="strip-item">
+          <span class="strip-dot blue"></span>
+          <span class="strip-label">Mesón</span>
+          <span class="strip-value" id="strip-meson">Recto</span>
+        </div>
+        <span class="strip-sep">·</span>
+        <div class="strip-item">
+          <span class="strip-dot blue"></span>
+          <span class="strip-label">Material</span>
+          <span class="strip-value" id="strip-mat">—</span>
+        </div>
+        <span class="strip-sep">·</span>
+        <div class="strip-item">
+          <span class="strip-dot gray"></span>
+          <span class="strip-label">Lavaplatos</span>
+          <span class="strip-value" id="strip-lava">Sin lavaplatos</span>
+        </div>
+      </div>
+
+      <!-- Bloque 1: Matriz 2×2 -->
+      <div class="matrix-block">
+
+        <!-- Celda 1: Tipo de mesón -->
+        <div class="m-cell">
+          <div class="cell-header">
+            <span class="cell-num">1</span>
+            <span class="cell-title">Tipo de mesón</span>
+          </div>
+          <div class="scroll-row" id="meson-row">
+            <div class="sel-card active" data-meson="recto" data-nombre="Recto">
+              <div class="sel-img">
+                <svg width="64" height="42" viewBox="0 0 64 42">
+                  <rect x="4" y="13" width="56" height="14" rx="2" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
+                  <line x1="4" y1="32" x2="60" y2="32" stroke="#2563EB" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+                  <line x1="4" y1="29" x2="4" y2="35" stroke="#2563EB" stroke-width="1.2"/>
+                  <line x1="60" y1="29" x2="60" y2="35" stroke="#2563EB" stroke-width="1.2"/>
+                  <text x="32" y="40" text-anchor="middle" font-size="9" fill="#1D4ED8" font-weight="700">a</text>
+                </svg>
+              </div>
+              <p class="sel-label">Recto</p>
+              <p class="sel-sub">1 medida</p>
+            </div>
+            <div class="sel-card" data-meson="ele" data-nombre="ELE">
+              <div class="sel-img">
+                <svg width="64" height="48" viewBox="0 0 64 48">
+                  <rect x="4" y="4" width="52" height="12" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <rect x="44" y="4" width="12" height="36" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <text x="24" y="22" text-anchor="middle" font-size="8" fill="#64748B" font-weight="600">a</text>
+                  <text x="59" y="26" font-size="8" fill="#64748B" font-weight="600">b</text>
+                  <text x="50" y="46" text-anchor="middle" font-size="8" fill="#94A3B8" font-weight="600">c</text>
+                </svg>
+              </div>
+              <p class="sel-label">ELE</p>
+              <p class="sel-sub">a + b − c</p>
+            </div>
+            <div class="sel-card" data-meson="barra" data-nombre="Barra 2-3 lados">
+              <div class="sel-img">
+                <svg width="64" height="42" viewBox="0 0 64 42">
+                  <rect x="4" y="13" width="56" height="14" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <text x="32" y="35" text-anchor="middle" font-size="8" fill="#64748B" font-weight="600">a</text>
+                  <text x="62" y="23" font-size="8" fill="#64748B" font-weight="600">b</text>
+                </svg>
+              </div>
+              <p class="sel-label">Barra 2-3 lados</p>
+              <p class="sel-sub">2 medidas</p>
+            </div>
+            <div class="sel-card" data-meson="isla" data-nombre="Isla">
+              <div class="sel-img">
+                <svg width="64" height="48" viewBox="0 0 64 48">
+                  <rect x="8" y="6" width="48" height="34" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <text x="2" y="26" font-size="8" fill="#64748B" font-weight="600">a</text>
+                  <text x="32" y="5" text-anchor="middle" font-size="8" fill="#64748B" font-weight="600">b</text>
+                  <text x="60" y="26" font-size="8" fill="#64748B" font-weight="600">c</text>
+                </svg>
+              </div>
+              <p class="sel-label">Isla</p>
+              <p class="sel-sub">3 medidas</p>
+            </div>
+            <div class="sel-card" data-meson="mesonbarra" data-nombre="Mesón + Barra">
+              <div class="sel-img">
+                <svg width="64" height="48" viewBox="0 0 64 48">
+                  <rect x="4" y="10" width="36" height="14" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <rect x="34" y="10" width="14" height="30" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+                  <text x="18" y="8" text-anchor="middle" font-size="8" fill="#64748B" font-weight="600">a</text>
+                  <text x="54" y="28" font-size="8" fill="#64748B" font-weight="600">b</text>
+                  <text x="41" y="46" text-anchor="middle" font-size="8" fill="#64748B" font-weight="600">c</text>
+                </svg>
+              </div>
+              <p class="sel-label">Mesón + Barra</p>
+              <p class="sel-sub">3 medidas</p>
+            </div>
+            <div class="sel-card" data-meson="otros" data-nombre="Otros">
+              <div class="sel-img" style="font-size:20px; color:#CBD5E1;">✦</div>
+              <p class="sel-label">Otros</p>
+              <p class="sel-sub">Manual</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Celda 2: Material -->
+        <div class="m-cell">
+          <div class="cell-header">
+            <span class="cell-num">2</span>
+            <span class="cell-title">Material</span>
+          </div>
+          <div class="scroll-row" id="mat-row">
+            <div class="loading-msg">Cargando materiales...</div>
+          </div>
+        </div>
+
+        <!-- Celda 3: Lavaplatos -->
+        <div class="m-cell">
+          <div class="cell-header">
+            <span class="cell-num">3</span>
+            <span class="cell-title">Lavaplatos</span>
+          </div>
+          <div class="scroll-row" id="lava-row">
+            <div class="loading-msg">Cargando lavaplatos...</div>
+          </div>
+        </div>
+
+        <!--Celda 4: Medidas -->
+        <div class="m-cell">
+          <div class="cell-header">
+            <span class="cell-num">4</span>
+            <span class="cell-title">Medidas del mesón</span>
+          </div>
+          <div class="medidas-inner">
+            <div class="esquema-box" id="esquema-svg"></div>
+            <div class="campos-box" id="campos-medidas"></div>
+          </div>
+          <div class="ml-pill">
+            <span class="ml-label">Metraje lineal (mano de obra)</span>
+            <span class="ml-value" id="ml-total">0.00 ml</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom-block">
+
+        <div class="b-cell">
+          <div class="cell-header">
+            <span class="cell-num">5</span>
+            <span class="cell-title">Otros datos</span>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Material (m²)</label>
+            <div class="input-wrap"><input type="number" id="f-m2" value="1.44" step="0.01" min="0"><span class="input-unit">m²</span></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Precio material</label>
+            <div class="input-wrap"><input type="number" id="f-precio-mat" value="0" step="1" min="0"><span class="input-unit">$/m²</span></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Mano de obra</label>
+            <select id="f-mo">
+              <option value="0">Sin mano de obra</option>
+              <option value="1" selected>Con mano de obra</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Huecos brillados</label>
+            <div class="input-wrap"><input type="number" id="f-huecos" value="0" min="0" step="1"><span class="input-unit">und</span></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Ángulo de hierro</label>
+            <div class="input-wrap"><input type="number" id="f-angulo" value="0" step="0.5" min="0" placeholder="Total $"><span class="input-unit">$</span></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Transporte</label>
+            <select id="f-transp">
+              <option value="0">Sin transporte</option>
+              <option value="1" selected>Zona cercana</option>
+              <option value="2">Zona lejana</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="b-cell">
+          <div class="cell-header">
+            <span class="cell-title">Resumen del cálculo</span>
+          </div>
+          <div class="summary-rows">
+            <div class="summary-row"><span class="summary-key">Material (<span id="lbl-mat">—</span>)</span><span class="summary-val" id="r-mat">$0.00</span></div>
+            <div class="summary-row"><span class="summary-key">Mano de obra (<span id="r-ml-label">0.00</span> ml)</span><span class="summary-val" id="r-mo">—</span></div>
+            <div class="summary-row"><span class="summary-key">Huecos brillados</span><span class="summary-val" id="r-huecos">—</span></div>
+            <div class="summary-row"><span class="summary-key">Lavaplatos (<span id="lbl-lava-sum">Sin lavaplatos</span>)</span><span class="summary-val" id="r-lava">—</span></div>
+            <div class="summary-row"><span class="summary-key">Ángulo de hierro</span><span class="summary-val" id="r-angulo">—</span></div>
+            <div class="summary-row"><span class="summary-key">Transporte</span><span class="summary-val" id="r-transp">—</span></div>
+          </div>
+          <div class="summary-total">
+            <span class="total-label">Total estimado</span>
+            <span class="total-value" id="r-total">$0.00</span>
+          </div>
+          <button class="btn-primary" id="btn-guardar">Calcular y guardar en historial</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- materiales-->
+    <div class="page" id="page-mat">
+      <div class="mgmt-card">
+        <div class="mgmt-header">
+          <h2 class="mgmt-title">Catálogo de materiales</h2>
+          <div class="actions-row">
+            <button class="btn-sm btn-blue" id="btn-nuevo-mat">+ Agregar</button>
+            <button class="btn-sm" id="btn-editar-mat">Editar</button>
+            <button class="btn-sm btn-danger" id="btn-eliminar-mat">Eliminar</button>
+          </div>
+        </div>
+        <div class="catalog-grid" id="mat-catalogo">
+          <div class="loading-msg">Cargando...</div>
+        </div>
+        <div class="edit-form" id="form-mat" style="display:none;">
+          <h3 class="form-title" id="form-mat-titulo">Nuevo material</h3>
+          <div class="form-row"><label class="form-label">Nombre</label><input type="text" id="mat-nombre" placeholder="Ej: Mármol Crema"></div>
+          <div class="form-row"><label class="form-label">Precio por m²</label><div class="input-wrap"><input type="number" id="mat-precio" placeholder="200" min="0"><span class="input-unit">$</span></div></div>
+          <div class="form-row"><label class="form-label">Imagen</label><input type="file" id="mat-imagen" accept="image/*"></div>
+          <div class="actions-row" style="margin-top:0.75rem;">
+            <button class="btn-sm btn-blue" id="btn-guardar-mat">Guardar</button>
+            <button class="btn-sm" id="btn-cancelar-mat">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <div class="mgmt-card">
+        <div class="mgmt-header"><h2 class="mgmt-title">Precios de configuración</h2></div>
+        <div class="form-row"><label class="form-label">Mano de obra ($/ml)</label><div class="input-wrap"><input type="number" id="cfg-mo" value="35" min="0"><span class="input-unit">$/ml</span></div></div>
+        <div class="form-row"><label class="form-label">Hueco brillado ($/und)</label><div class="input-wrap"><input type="number" id="cfg-hueco" value="25" min="0"><span class="input-unit">$/und</span></div></div>
+        <div class="form-row"><label class="form-label">Transporte zona cercana</label><div class="input-wrap"><input type="number" id="cfg-transp-cerca" value="50" min="0"><span class="input-unit">$</span></div></div>
+        <div class="form-row"><label class="form-label">Transporte zona lejana</label><div class="input-wrap"><input type="number" id="cfg-transp-lejos" value="120" min="0"><span class="input-unit">$</span></div></div>
+        <button class="btn-sm btn-blue" id="btn-guardar-cfg" style="margin-top:1rem;">Guardar configuración</button>
+      </div>
+    </div>
+
+
+    <!-- lavaplatos -->
+    <div class="page" id="page-lava">
+      <div class="mgmt-card">
+        <div class="mgmt-header">
+          <h2 class="mgmt-title">Tipos de lavaplatos</h2>
+          <div class="actions-row">
+            <button class="btn-sm btn-blue" id="btn-nuevo-lava">+ Agregar</button>
+            <button class="btn-sm" id="btn-editar-lava">Editar</button>
+            <button class="btn-sm btn-danger" id="btn-eliminar-lava">Eliminar</button>
+          </div>
+        </div>
+        <div class="catalog-grid" id="lava-catalogo">
+          <div class="loading-msg">Cargando...</div>
+        </div>
+        <div class="edit-form" id="form-lava" style="display:none;">
+          <h3 class="form-title" id="form-lava-titulo">Nuevo lavaplatos</h3>
+          <div class="form-row"><label class="form-label">Nombre</label><input type="text" id="lava-nombre" placeholder="Ej: 3 tazas"></div>
+          <div class="form-row"><label class="form-label">Precio</label><div class="input-wrap"><input type="number" id="lava-precio" placeholder="150" min="0"><span class="input-unit">$</span></div></div>
+          <div class="form-row"><label class="form-label">Imagen</label><input type="file" id="lava-imagen" accept="image/*"></div>
+          <div class="actions-row" style="margin-top:0.75rem;">
+            <button class="btn-sm btn-blue" id="btn-guardar-lava">Guardar</button>
+            <button class="btn-sm" id="btn-cancelar-lava">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--historial-->
+    <div class="page" id="page-hist">
+      <div class="mgmt-card">
+        <div class="mgmt-header">
+          <h2 class="mgmt-title">Historial de cálculos</h2>
+          <button class="btn-sm btn-danger" id="btn-limpiar-hist">Limpiar todo</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="hist-table">
+            <thead>
+              <tr><th>Fecha</th><th>Mesón</th><th>Material</th><th>m²</th><th>ML</th><th>Total</th><th></th></tr>
+            </thead>
+            <tbody id="hist-body">
+              <tr><td colspan="7" class="empty-row">No hay cálculos guardados aún</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
