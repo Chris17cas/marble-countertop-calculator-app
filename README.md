@@ -223,43 +223,6 @@ Base URL: `http://localhost:5000`
   }
 ]
 ```
-
----
-
-## Calculation logic
-
-The total price of a countertop follows this formula:
-
-```
-Total = Material_Cost + Labor_Cost + Sink_Cost + Hole_Cost + Iron_Angle + Transport
-```
-
-Where:
-
-```
-Material_Cost  = m2 * material_price_per_m2
-Labor_Cost     = linear_meters * labor_price_per_ml    (if applicable)
-Sink_Cost      = fixed_sink_price                      (if applicable)
-Hole_Cost      = number_of_holes * price_per_hole
-Iron_Angle     = manually entered value
-Transport      = near_zone_price | far_zone_price      (per selection)
-```
-
-### Linear meter calculation by countertop type
-
-Measurements are entered in **centimeters** and converted to meters internally:
-
-| Type | Formula | Description |
-|------|---------|-------------|
-| Straight | `ML = a` | Single run |
-| L-Shape | `ML = a + b - c` | c is the countertop width, subtracted to avoid double-counting |
-| 2-3 Side Bar | `ML = a + b` | Length plus bar side |
-| Island | `ML = a + b + c` | All three measured sides |
-| Counter + Bar | `ML = a + b + c` | Counter, bar height and bar width |
-| Other | `ML = manual input` | User defines the linear meters directly |
-
----
-
 ## Installation and setup
 
 ### Prerequisites
